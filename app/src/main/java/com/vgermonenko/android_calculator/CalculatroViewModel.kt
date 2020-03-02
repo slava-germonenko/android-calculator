@@ -2,10 +2,6 @@ package com.vgermonenko.android_calculator
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.lang.IllegalArgumentException
-import java.lang.StringBuilder
-import java.math.BigDecimal
-import java.math.MathContext
 import java.math.RoundingMode
 import java.util.*
 import kotlin.math.PI
@@ -24,7 +20,7 @@ class CalculatorViewModel : ViewModel() {
     val incorrectExpression = MutableLiveData<Boolean>(false)
 
 
-    private var memory = 0.toBigDecimal()
+    private var memory : Double = 0.0
     private var isClearMode = false
 
     private fun updateField() {
@@ -39,7 +35,7 @@ class CalculatorViewModel : ViewModel() {
     fun onMemoryClick(){
         if (isClearMode){
             isClearMode = false
-            memory = 0.toBigDecimal()
+            memory = 0.toDouble()
         }else{
             isClearMode = true
             expression.clear()
@@ -87,38 +83,38 @@ class CalculatorViewModel : ViewModel() {
         }
     }
 
-    private fun calculate(inverse: List<String>): BigDecimal {
+    private fun calculate(inverse: List<String>): Double {
         val stack = Stack<String>()
         for (i in inverse) {
             if (i in operationSet + geoSet) {
-                val arg = stack.pop().toBigDecimal()
+                val arg = stack.pop().toDouble()
                 when (i) {
                     "+" -> {
-                        val arg2 = stack.pop().toBigDecimal()
+                        val arg2 = stack.pop().toDouble()
                         stack.push((arg + arg2).toString())
                     }
                     "-" -> {
-                        val arg2 = stack.pop().toBigDecimal()
-                        stack.push((arg - arg2).toString())
+                        val arg2 = stack.pop().toDouble()
+                        stack.push((arg2 - arg).toString())
                     }
                     "*" -> {
-                        val arg2 = stack.pop().toBigDecimal()
+                        val arg2 = stack.pop().toDouble()
                         stack.push((arg * arg2).toString())
                     }
                     "/" -> {
-                        val arg2 = stack.pop().toBigDecimal()
-                        stack.push(arg.divide(arg2, 3, RoundingMode.HALF_UP).toString())
+                        val arg2 = stack.pop().toDouble()
+                        val result = arg2 / arg;
+                        if (result.isInfinite())
+                            throw Exception("Division by zero!")
+
+                        stack.push(result.toString())
                     }
                     "sin" ->{
-                        val sin = sin(arg.toDouble() / 360 * 2 * PI).toBigDecimal().round(
-                            MathContext(3)
-                        )
+                        val sin = sin(arg / 360 * 2 * PI)
                         stack.push(sin.toString())
                     }
                     "cos" ->{
-                        val cos = cos(arg.toDouble() / 360 * 2 * PI).toBigDecimal().round(
-                            MathContext(3)
-                        )
+                        val cos = cos(arg / 360 * 2 * PI)
                         stack.push(cos.toString())
                     }
                     else -> throw IllegalArgumentException()
@@ -127,7 +123,7 @@ class CalculatorViewModel : ViewModel() {
                 stack.push(i)
             }
         }
-        return stack.pop().toBigDecimal()
+        return stack.pop().toDouble()
     }
 
     private fun parseField(): List<String> {
