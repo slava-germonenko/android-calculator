@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Button" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="Button.RegularButton" parent="Button">
+        <item name="android:background">@color/regularButtonColor</item>
+    </style>
+
+    <style name="AccentButton" parent="Button">
+        <item name="android:background">@color/accentButtonColor</item>
+    </style>
+
+    <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
 </resources>
