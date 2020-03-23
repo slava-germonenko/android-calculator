@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.vgermonenko.android_calculator.CalculatorViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,6 +29,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onMemoryClick()}"
                 android:text="MR" />
 
             <Button
@@ -31,6 +38,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onMemoryPlusClick()}"
                 android:text="M+" />
 
             <Button
@@ -39,6 +47,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onMemoryMinusClick()}"
                 android:text="M-" />
 
             <ImageButton
@@ -48,6 +57,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/accentButtonColor"
+                android:onClick="@{() -> viewModel.onDeleteClick()}"
                 android:src="@drawable/baseline_arrow_back_black_24" />
 
         </LinearLayout>
@@ -65,6 +75,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onSinClick()}"
                 android:text="sin" />
 
             <Button
@@ -73,6 +84,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onCosCLick()}"
                 android:text="cos" />
 
             <Button
@@ -81,6 +93,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onOpenClick()}"
                 android:text="(" />
 
             <Button
@@ -89,6 +102,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onCloseClick()}"
                 android:text=")" />
 
         </LinearLayout>
@@ -106,6 +120,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on1Click()}"
                 android:text="1" />
 
             <Button
@@ -114,6 +129,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on2Click()}"
                 android:text="2" />
 
             <Button
@@ -122,6 +138,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on3Click()}"
                 android:text="3" />
 
             <Button
@@ -130,6 +147,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onPlusClick()}"
                 android:text="+" />
 
         </LinearLayout>
@@ -147,6 +165,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on4Click()}"
                 android:text="4" />
 
             <Button
@@ -155,6 +174,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on5Click()}"
                 android:text="5" />
 
             <Button
@@ -163,6 +183,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on6Click()}"
                 android:text="6" />
 
             <Button
@@ -171,6 +192,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onMinusClick()}"
                 android:text="-" />
 
         </LinearLayout>
@@ -188,6 +210,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on7Click()}"
                 android:text="7" />
 
             <Button
@@ -196,6 +219,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on8Click()}"
                 android:text="8" />
 
             <Button
@@ -204,6 +228,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on9Click()}"
                 android:text="9" />
 
             <Button
@@ -212,6 +237,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operationButtonColor"
+                android:onClick="@{() -> viewModel.onMultiClick()}"
                 android:text="*" />
 
         </LinearLayout>
@@ -230,6 +256,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.onDotClick()}"
                 android:text="." />
 
             <Button
@@ -238,6 +265,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/regularButtonColor"
+                android:onClick="@{() -> viewModel.on0Click()}"
                 android:text="0" />
 
             <Button
@@ -246,6 +274,7 @@
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
                 android:backgroundTint="@color/accentButtonColor"
+                android:onClick="@{() -> viewModel.onEqualClick()}"
                 android:text="=" />
 
             <Button
@@ -253,6 +282,7 @@
                 android:layout_height="@dimen/button_height"
                 android:layout_margin="@dimen/button_margin"
                 android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onDivClick()}"
                 android:text="/"
                 android:backgroundTint="@color/operationButtonColor" />
 
@@ -276,6 +306,7 @@
             android:ellipsize="start"
             android:gravity="end"
             android:singleLine="true"
+            android:text="@{viewModel.calculatorField}"
             android:textAppearance="@style/TextAppearance.Title"
             app:layout_constraintBottom_toTopOf="@+id/linearLayoutMemory"
             tools:layout_editor_absoluteX="-16dp"
